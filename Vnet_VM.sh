@@ -18,7 +18,7 @@ az vm image list --location eastus --publisher MicrosoftWindowsDesktop --all --o
 az vm create -n Win_10_1 -g RG_1 --image MicrosoftWindowsDesktop:Windows-10:19h1-pro:18362.476.1911072223 --authentication-type password --size Standard_D2_v2 --location eastus --computer-name Win-10-1 --admin-username scott --vnet-name VN_1 --subnet SN_1
 
 
-### restrict rdp from just my workstation. NSG `Win_10_1NSG` and rule `rdp` was auto-created by `az vm create`
+### restrict rdp to just from my workstation's public IP. NSG `Win_10_1NSG` and rule `rdp` was auto-created by `az vm create`
 az network nsg rule update -n rdp -g RG_1 --source-address-prefix 1.2.3.4/32 --nsg-name Win_10_1NSG
 
 
